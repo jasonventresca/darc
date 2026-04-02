@@ -20,9 +20,12 @@ PUML_FILES := $(wildcard *.puml)
 PNG_FILES  := $(PUML_FILES:.puml=.png)
 SVG_FILES  := $(PUML_FILES:.puml=.svg)
 
-.PHONY: all images png svg clean
+.PHONY: all setup images png svg clean
 
 all: images
+
+setup:
+	./install.sh
 
 images: png svg
 
