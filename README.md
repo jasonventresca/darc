@@ -22,10 +22,13 @@ embed in docs, or share with your team.
 ## Quick start
 
 ```bash
-# 1. Start the PlantUML server
+# 1. Install dependencies (pulls the PlantUML Docker image)
+make setup
+
+# 2. Start the PlantUML server
 docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
 
-# 2. Drop your .puml files into this directory, then:
+# 3. Drop your .puml files into this directory, then:
 make
 ```
 
@@ -109,6 +112,7 @@ For PlantUML syntax reference, see: https://plantuml.com/
 
 | File | Purpose |
 |------|---------|
+| `install.sh` | One-time setup: checks prerequisites (Docker, Python 3, make) and pulls the PlantUML Docker image. Run via `make setup`. |
 | `render_puml.py` | Python script that encodes `.puml` source and fetches rendered images from the PlantUML server. Uses only the standard library (no pip install needed). |
-| `Makefile` | Dependency-tracked build: renders all `.puml` files to PNG + SVG, with incremental rebuilds. |
+| `Makefile` | Dependency-tracked build: renders all `.puml` files to PNG + SVG, with incremental rebuilds. Also provides `make setup`. |
 | `*.puml` | Your PlantUML diagram source files (add your own here). |
